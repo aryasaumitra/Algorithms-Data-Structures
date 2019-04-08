@@ -4,3 +4,4 @@
 
 	1)Dijkstra's Algorithm
 	2)Topological Sorting
+	3)Prims Algorithm
