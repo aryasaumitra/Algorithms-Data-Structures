@@ -9,3 +9,4 @@
 ## List of Data Structres
 
 	1) Basic Linked List
+	2) Doubly Linked List
