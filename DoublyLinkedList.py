@@ -25,3 +25,9 @@ class DoubleLinkedList:
 
     def __init__(self,listofvalues=None):
         self.head=Node('Head')
+
+        if listofvalues:
+            self.addNodes(listofvalues)
+
+    def addNodes(listofNodes):
+        pass
