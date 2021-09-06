@@ -27,7 +27,44 @@ class DoubleLinkedList:
         self.head=Node('Head')
 
         if listofvalues:
-            self.addNodes(listofvalues)
+            self.__addNodes(listofvalues)
 
-    def addNodes(listofNodes):
-        pass
+    def __addNodes(self,listofNodes):
+
+        travelPointer = self.head
+        
+        for eachvalue in listofNodes:
+            node=Node(eachvalue)
+
+            travelPointer.right = node
+            node.left = travelPointer
+            travelPointer = travelPointer.right
+
+    def printNodes(self):
+
+        righttravelPointer = self.head
+
+        print('\nList from Left to Right\n')
+        while righttravelPointer is not None:
+
+            if righttravelPointer.right is None:
+                lefttravelpointer = righttravelPointer
+            print(righttravelPointer.data,end = "->")
+            righttravelPointer = righttravelPointer.right
+
+        print("\nList from Right to Left\n")
+
+        while lefttravelpointer is not None:
+
+            print(lefttravelpointer.data,end = "<-")
+            lefttravelpointer = lefttravelpointer.left
+
+
+
+values=[2,3,5,6,7,8,9]
+
+doubleLinkedList = DoubleLinkedList(values)
+
+doubleLinkedList.printNodes()
+
+
