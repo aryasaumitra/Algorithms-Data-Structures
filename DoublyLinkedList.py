@@ -59,6 +59,42 @@ class DoubleLinkedList:
             print(lefttravelpointer.data,end = "<-")
             lefttravelpointer = lefttravelpointer.left
 
+    def __insertStart(self,value):
+        pass
+
+    def __insertEnd(self,value):
+        pass
+
+    def __insertMiddle(self,value):
+        pass
+
+
+    def insertNode(self,value,location):
+        if location == 'Start':
+            self.__insertStart(value)
+
+        elif location == 'End':
+            self.__insertEnd(value)
+
+        elif location == 'Mid':
+            self.__insertMiddle(value)
+        
+        else:
+            print('Enter Correct Location')
+
+    def __deleteStart(self,value):
+        pass
+
+    def __deleteEnd(self,value):
+        pass
+
+    def __deleteMid(self,value):
+        pass
+
+    def deleteNode(self,value,location):
+
+        pass
+
 
 
 values=[2,3,5,6,7,8,9]
