@@ -11,6 +11,7 @@
         4. Insert a value at end
         5. Insert a value at middle
         6. Insert a value at start
+        7. Find a Value
 
 """
 
@@ -60,16 +61,44 @@ class DoubleLinkedList:
             lefttravelpointer = lefttravelpointer.left
 
     def __insertStart(self,value):
-        pass
+        
+        newnode = Node(value)
+
+        print('\nList Prior to adding:'+str(value)+'\n')
+
+        self.printNodes()
+
+        newnode.right = self.head.right
+        newnode.left = self.head
+        self.head.right = newnode
+        oldNode = newnode.right
+        oldNode.left = newnode
+
+        print('\nList After adding:'+str(value)+'\n')
+
+        self.printNodes()
 
     def __insertEnd(self,value):
-        pass
+        
+        newnode = Node(value)
+        print('\nList Prior to adding:'+str(value)+'\n')
+        self.printNodes()
+
+        righttravelPointer = self.head
+        while righttravelPointer.right is not None:
+            righttravelPointer = righttravelPointer.right
+
+        righttravelPointer.right = newnode
+        newnode.left = righttravelPointer
+
+        print('\nList After adding:'+str(value)+'\n')
+        self.printNodes()
 
     def __insertMiddle(self,value):
         pass
 
 
-    def insertNode(self,value,location):
+    def insertNode(self,value,location,after = None):
         if location == 'Start':
             self.__insertStart(value)
 
@@ -83,15 +112,44 @@ class DoubleLinkedList:
             print('Enter Correct Location')
 
     def __deleteStart(self,value):
-        pass
+        print('\nList Prior to deleting:'+str(value)+'\n')
+        self.printNodes()
+
+        currentStart = self.head.right
+        self.head.right = currentStart.right
+        currentStart.right.left = self.head
+
+        currentStart.left = None
+        currentStart.right = None
+
+        del currentStart
+
+        print('\nList After deleting:'+str(value)+'\n')
+        self.printNodes()
 
     def __deleteEnd(self,value):
-        pass
+        
+        rightTravelPointer = self.head.right
+        print('\nList Prior to deleting:'+str(value)+'\n')
+        self.printNodes()
 
+        while rightTravelPointer.right is not None:
+            prevNode = rightTravelPointer
+            rightTravelPointer = rightTravelPointer.right
+
+        prevNode.right = None
+
+        rightTravelPointer.left = None
+
+        del rightTravelPointer
+
+        print('\nList After deleting:'+str(value)+'\n')
+        self.printNodes()
+        
     def __deleteMid(self,value):
         pass
 
-    def deleteNode(self,value,location):
+    def deleteNode(self,value):
 
         pass
 

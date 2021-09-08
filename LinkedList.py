@@ -11,6 +11,7 @@
         4. Insert a value at end
         5. Insert a value at middle
         6. Insert a value at start
+        7. Find a Value
 
 """""
 
