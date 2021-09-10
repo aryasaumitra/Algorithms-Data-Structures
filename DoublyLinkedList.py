@@ -60,6 +60,42 @@ class DoubleLinkedList:
             print(lefttravelpointer.data,end = "<-")
             lefttravelpointer = lefttravelpointer.left
 
+    def __find(self,value):
+
+        if self.head.right is not None:
+            kindOfvalue=''
+            travelPointer=self.head.right
+            flag=-1
+            if travelPointer.data == value:
+                flag =1
+                kindOfvalue='Start'
+            while travelPointer is not None and flag==-1:
+                if travelPointer.data == value and travelPointer.right is not None:
+                    flag=1
+                    kindOfvalue='Mid'
+                    break
+                elif travelPointer.data == value and travelPointer.right is None:
+                    flag=1
+                    kindOfvalue='End'
+                    break
+                travelPointer=travelPointer.right
+
+            if flag != -1:
+
+                #print('\nFound '+self.__find(value)['value']+': Type '+self.__find(value)['type'])
+
+                return {
+                    'value':value,
+                    'type':kindOfvalue
+                }
+            else:
+                # print('\nValue Not found')
+                return -1
+
+        else:
+            # print('\nEmpty Linked List')
+            return -2
+
     def __insertStart(self,value):
         
         newnode = Node(value)
