@@ -237,10 +237,10 @@ class DoubleLinkedList:
             findvalue = self.__find(value)
 
             if findvalue['type'] == 'Start':
-                self.__deleteStart()
+                self.__deleteStart(value)
 
             elif findvalue['type'] == 'End':
-                self.__deleteEnd()
+                self.__deleteEnd(value)
 
             else:
                 self.__deleteMid(value)
@@ -252,5 +252,33 @@ values=[2,3,5,6,7,8,9]
 doubleLinkedList = DoubleLinkedList(values)
 
 doubleLinkedList.printNodes()
+
+print('\n#########################   Finding Node 6 ##########################')
+
+doubleLinkedList.findNode(6)
+
+print('\n#########################   Deleting Middle Node 6 ##########################')
+
+doubleLinkedList.deleteNode(6)
+
+print('\n#########################   Deleting End Node 9 ##########################')
+
+doubleLinkedList.deleteNode(9)
+
+print('\n#########################   Deleting Start Node 2 ##########################')
+
+doubleLinkedList.deleteNode(2)
+
+print('\n#########################   Adding Start Node 2 ##########################')
+
+doubleLinkedList.insertNode(2,'Start')
+
+print('\n#########################   Adding End Node 9 ##########################')
+
+doubleLinkedList.insertNode(9,'End')
+
+print('\n#########################   Adding Middle Node 6 ##########################')
+
+doubleLinkedList.insertNode(6,'Mid',5)
 
 
