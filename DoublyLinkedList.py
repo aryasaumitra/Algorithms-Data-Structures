@@ -95,6 +95,12 @@ class DoubleLinkedList:
         else:
             # print('\nEmpty Linked List')
             return -2
+    def findNode(self,value):
+
+        if self.__find(value)!=-2:
+            return print('\nFound '+str(self.__find(value)['value'])+' and Type '+str(self.__find(value)['type'])+'\n') if self.__find(value)!=-1 else print("Value not found")
+        else:
+            print("Empty Linked List")
 
     def __insertStart(self,value):
         
@@ -130,8 +136,24 @@ class DoubleLinkedList:
         print('\nList After adding:'+str(value)+'\n')
         self.printNodes()
 
-    def __insertMiddle(self,value):
-        pass
+    def __insertMiddle(self,value,after):
+        
+        newnode = Node(value)
+        print('\nList Prior to adding:'+str(value)+'\n')
+        self.printNodes()
+
+        righttravelPointer = self.head.right
+
+        while righttravelPointer.data != after:
+            righttravelPointer = righttravelPointer.right
+
+        newnode.right = righttravelPointer.right
+        newnode.left = righttravelPointer
+        righttravelPointer.right = newnode
+        newnode.right.left = newnode
+
+        print('\nList After adding:'+str(value)+'\n')
+        self.printNodes()
 
 
     def insertNode(self,value,location,after = None):
@@ -142,7 +164,11 @@ class DoubleLinkedList:
             self.__insertEnd(value)
 
         elif location == 'Mid':
-            self.__insertMiddle(value)
+            if after == None or self.__find(after) == -1 or self.__find(after) == -2:
+                print('After Value does not exist')
+                self.printNodes()
+            else:
+                self.__insertMiddle(value,after)
         
         else:
             print('Enter Correct Location')
@@ -183,11 +209,41 @@ class DoubleLinkedList:
         self.printNodes()
         
     def __deleteMid(self,value):
-        pass
+        currentNode = self.head.right
+        print('\nList Prior to deleting:'+str(value)+'\n')
+        self.printNodes()
+
+        while currentNode.data != value:
+            prevnode = currentNode
+            currentNode = currentNode.right
+
+        nextnode = currentNode.right
+        prevnode.right = nextnode
+        nextnode.left = prevnode
+
+        currentNode.right = None
+        currentNode.left = None
+
+        del currentNode
+
+        print('\nList After deleting:'+str(value)+'\n')
+        self.printNodes()
 
     def deleteNode(self,value):
 
-        pass
+        if self.head.right is not None:
+            self.__find(value) != -1
+
+            findvalue = self.__find(value)
+
+            if findvalue['type'] == 'Start':
+                self.__deleteStart()
+
+            elif findvalue['type'] == 'End':
+                self.__deleteEnd()
+
+            else:
+                self.__deleteMid(value)
 
 
 
